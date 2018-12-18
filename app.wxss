@@ -1,0 +1,15 @@
+/**app.wxss**/
+@import "./lib/weui.wxss";
+@import "./assets/common.wxss";
+/* @import "./template/tabbar/tabBar.wxss"; */
+
+page {
+  box-sizing: border-box;
+  background-color: #F5F7FA;
+  /* background-color: #FFFFFF; */
+  font-family: PingFangSC-Regular;
+  font-size: 12px;
+}
+view {
+  box-sizing: border-box;
+}

@@ -1,0 +1,51 @@
+/* pages/apply/visitedInformation/visitedInformation.wxss */
+
+.exist_icon {
+  display: inline-block;
+}
+
+.no_exist {
+  display: inline-block;
+  margin-right: 10px;
+  font-size: 12px;
+  text-align: center;
+}
+
+.no_exist text {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  line-height: 18px;
+  background-color: #f5a623;
+  border-radius: 100%;
+  color: #fff;
+}
+
+.exist {
+  margin-top: -7rpx; 
+  margin-left: 10px;
+  margin-bottom: 1px;
+}
+
+.query_name_error {
+  height: 30px;
+  line-height: 30px;
+  background-color: #f5f7fa;
+  text-align: center;
+  font-size: 14px;
+  color: #4a4a4a;
+}
+
+.query_name_error_tip {
+  display: inline-block;
+}
+
+.form_submit {
+  position: relative;
+}
+
+.submit_apply{
+  position: absolute;
+  bottom: -80px;
+  width: 100%;
+}

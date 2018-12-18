@@ -1,0 +1,198 @@
+/**index.wxss**/
+
+.home_container {
+  height: 100%;
+}
+
+.home_container_header {
+  background-color: #fff;
+}
+
+.canvas-box {
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  left: -2px;
+}
+
+.canvas-box canvas {
+  width: 200px;
+  height: 200px;
+}
+
+.home_container_header_welcome {
+  padding-left: 20px;
+  padding-bottom: 10px;
+  font-size: 18px;
+  color: #2e2e39;
+}
+
+.home_container_header_date {
+  padding-left: 20px;
+  font-size: 14px;
+  color: #7c86a2;
+}
+
+.home_menu_history {
+  width: 25px;
+  height: 25px;
+  position: fixed;
+  top: 2px;
+  left: 20px;
+  z-index: 9;
+}
+
+.home_menu_history.home_menu_down {
+  width: 18px;
+  height: 9px;
+  top: 18px;
+  left: 35%;
+}
+
+.white_fixed {
+  width: 100%;
+  height: 80px;
+  position: fixed;
+  top: 0;
+  background-color: #FFFFFF;
+  z-index: 9;
+}
+
+/* 日历 */
+
+.calendar {
+  background-color: #fff;
+}
+
+.calendar-header {
+  width: 50%;
+  font-size: large;
+  color: #2e2e39;
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9999999999;
+}
+
+.calendar-board {
+  color: #7C86A2 !important;
+  font-size: 14px;
+}
+
+.calendar--calendar-weeks {
+  position: fixed;
+  width: 100%;
+  top: 40px;
+  margin-bottom: 8px;
+  z-index: 9999999999;
+}
+
+.calendar--calendar-days {
+  padding-bottom: 8px;
+}
+
+.calendar--calendar-cell{
+  width: 34px !important;
+  height: 34px !important;
+}
+
+.calendar-board .calendar--calendar-cell > text {
+  color: #7C86A2 !important;
+}
+
+.calendar--cwj-icon {
+  font-size: 18px !important;
+}
+
+.home_container_main {
+  width: 100%;
+  padding-left: 20px;
+  position: relative;
+}
+
+.overflow_height{
+  margin-bottom: 100px;
+}
+
+.home_container_main_message_title {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-size: 14px;
+  color: #509702;
+}
+
+.home_swiper_box {
+  height: 74px;
+}
+
+.home_swiper_item {
+  box-sizing: border-box;
+  width: 288px !important;
+  padding-right: 20rpx !important;
+}
+
+.home_swiper_box_first {
+  box-sizing: border-box;
+  height: 74px;
+  padding-top: 16px;
+  padding-left: 16px;
+  padding-bottom: 15px;
+  border-radius: 5px;
+  background-color: #fff;
+}
+
+.home-swiper_box_company {
+  height: 20px;
+  line-height: 20px;
+  margin-bottom: 8px;
+  font-size: 14px;
+  color: #4a4a4a;
+}
+
+.home-swiper_box_time {
+  height: 17px;
+  line-height: 17px;
+  font-size: 12px;
+  color: #979797;
+}
+
+.home_container_main_schedule_title {
+  padding-top: 50rpx;
+  padding-bottom: 22rpx; 
+  display: flex;
+}
+
+.today_schedule{
+  flex: 2;
+  font-size: 14px;
+  color: #7c86a2;
+}
+
+.home_more {
+  flex: 1;
+  text-align: right;
+  padding-right: 20px;
+  font-size: 12px;
+  color: #bdbcc7;
+}
+
+.home_container_main_more {
+  padding: 10px 0 20px;
+  text-align: center;
+  font-size: 12px;
+  color: #7c86a2;
+}
+
+.home_no_record {
+  padding: 20px;
+  text-align: center;
+  font-size: 12px;
+}
+
+.go_apply {
+  border-bottom: 1px solid #207ce9;
+  color: #207ce9;
+}

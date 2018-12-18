@@ -1,0 +1,85 @@
+<!--index.wxml-->
+<view class="home_container">
+  <!-- <view class="canvas-box canvas-box-one">
+    <canvas hidden="{{canvasHidden}}" canvas-id='myCanvas'></canvas>
+  </view> -->
+
+  <view class='white_fixed'></view>
+  
+  <image bindtap='getHistory' class="home_menu_history" src="../../image/menu.png"></image>
+  
+  <view class="home_container_header" style='margin-top: {{marginTop}}px;transition: {{transition}}s;'>
+    <view class='home_containier_calendar' >
+      <calendar calendar-style="calendar" header-style="calendar-header" board-style="calendar-board" year="{{curYear}}" month="{{curMonth}}" day="{{day}}" next='{{next}}' prev='{{prev}}' show-more-days='{{false}}' days-color="{{dayStyle}}" cell-size='34' weeks-type="cn" bindnextMonth="next" bindprevMonth="prev" binddateChange="dateChange" binddayClick="dayClick" />
+
+    </view>
+  </view>
+
+  <view class="home_container_main" style=''>
+
+    <view class="home_container_main_schedule">
+      <view class="home_container_main_schedule_title">
+        <view class='today_schedule'>{{change_date}}日程</view>
+        <!-- <view class='home_more' wx:if='{{today_schedule}}' bindtap='see_more'>更多</view> -->
+      </view>
+
+      <!-- <swiper wx:if='{{today_schedule}}' bindchange='bindchange' current='{{preIndex}}' indicator-active-color="#fdbb1b" previous-margin="30rpx" next-margin="30rpx" class='home_swiper_box'> -->
+        <!-- <view>
+          <text>无记录</text>
+        </view> -->
+        <!-- <block class="home_swiper" wx:if="{{no_record}}">
+          <swiper-item class='home_swiper_item'>
+              <view class="home_no_record">
+               <text>暂无日程，</text><text class='go_apply' bindtap='go_apply'>去申请</text>
+              </view>
+          </swiper-item>
+        </block> -->
+
+        <!-- <block class="home_swiper" wx:for='{{history_record}}' wx:key='{{item.id}}'>
+          <swiper-item class='home_swiper_item' bindlongpress="deleteRecord" data-id="{{item.id}}" data-time="{{item.entry_time}}" data-index="{{index}}">
+            <navigator url="./detail/detail?id={{item.id}}&visit_status={{item.visit_status}}" hover-class="navigator-hover">
+              <view class="home_swiper_box_first {{item.class}}">
+                <view></view>
+                <view>
+                  <view class="home-swiper_box_company">{{item.come_from}}</view>
+                  <view class="home-swiper_box_time">{{item.entry_date}}</view>
+                </view>
+              </view>
+            </navigator>
+          </swiper-item>
+        
+        </block>
+      </swiper> -->
+
+      <view wx:if='{{today_schedule}}' class='overflow_height' style='height: auto;overflow-y: scroll'>
+        <block class="home_swiper" wx:if="{{no_record}}">
+          <view class="home_no_record">
+               <text>暂无日程，</text><text class='go_apply' bindtap='go_apply'>去申请</text>
+              </view>
+        </block>
+
+        <block wx:for='{{history_record}}' wx:key="{{item.id}}" >
+          <navigator url="./detail/detail?id={{item.id}}&visit_status={{item.visit_status}}" hover-class="navigator-hover">
+            <view class="touch_item {{item.isTouchMove ? 'touch-move-active' : ''}} {{item.class}} border_radius"  bindlongpress="deleteRecord" data-id="{{item.id}}" data-time="{{item.entry_time}}" data-index="{{index}}">
+              <view class='content'>
+                <view class="content_company">{{item.come_from}}</view>
+                <view class="content_time">{{item.entry_date}}</view>
+              </view>
+
+            </view>
+          </navigator>
+
+          <view class='gray_line'></view>
+        </block>
+
+        <view wx:if="{{no_more}}" class="home_container_main_more">到底了</view>
+        <view wx:if="{{look_more}}" class="home_container_main_more" bindtap='see_more'>查看更多</view>
+      </view>
+      
+    </view>
+
+  </view>
+
+<tabbar tabbar="{{tabbar}}"></tabbar>
+
+</view>

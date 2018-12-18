@@ -1,0 +1,31 @@
+<!--pages/apply/applySuccess/applySuccess.wxml-->
+<view class='applySuccess_container'>
+  <view class="group">
+    <icon type="success" size="70" color='#42a0ff' />
+  </view>
+  <view class="group">
+    <text>申请已提交成功</text>
+  </view>
+  <view class="group">
+    <text>我们会在1-3个工作日内进行审核，请耐心等待。</text>
+  </view>
+
+  <!-- <view class="group">
+    <button bindtap='goon_apply'>继续申请</button>
+  </view> -->
+
+  <view class="group">
+    <button bindtap='back_home'>返回首页</button>
+  </view>
+
+  <view class='fixed_margin'></view>
+
+  <view class="group_bottom">
+    <view class='long_press'>长按保存下面图中二维码</view>
+    <view class='two_bar_code'>
+      <!-- 二维码必须是网络图片 -->
+      <image src='https://avatar.csdn.net/4/6/5/2_qq_35713752.jpg' data-src="https://avatar.csdn.net/4/6/5/2_qq_35713752.jpg" bindtap="previewImage" mode='aspectFit' alt=''></image>
+    </view>
+    <view class='instant_tip'>关注公众号获取访问消息即时通知</view>
+  </view>
+</view>

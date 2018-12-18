@@ -1,0 +1,182 @@
+<!--pages/template/tabbar/tabBar.wxml-->
+<template name="tabBar">
+  <view class="home_container">
+  <!-- <view class="canvas-box canvas-box-one">
+    <canvas hidden="{{canvasHidden}}" canvas-id='myCanvas'></canvas>
+  </view> -->
+
+  <view class='white_fixed'></view>
+  <!-- <navigator url="../history/history" hover-class="navigator-hover">
+    <image class="home_menu_history" src="../../image/menu.png"></image>
+  </navigator> -->
+  
+  <view class="home_container_header" style='margin-top: {{marginTop}}px;transition: 1s;'>
+    <!-- <view class="home_container_header_welcome">{{welcome}}</view> -->
+    <!-- <view class="home_container_header_date">今天是{{date}}</view> -->
+
+    <view class='home_containier_calendar' >
+      <!-- <image class="home_menu_history home_menu_down" src="../../image/xl-icon.png"></image> -->
+
+      <!-- <calendar  calendar-style="calendar" header-style="calendar-header" board-style="calendar-board" next='{{true}}' prev='{{true}}' show-more-days='{{false}}' days-color="{{dayStyle}}" weeks-type="cn" binddayClick="dayClick" /> -->
+    </view>
+
+  </view>
+
+  <view class="home_container_main">
+    <!-- <view class="home_container_main_message">
+      <view class="home_container_main_message_title">未读消息</view>
+
+      <swiper indicator-active-color="#fdbb1b" previous-margin="30rpx" next-margin="30rpx" class='home_swiper_box'>
+        <block class="home_swiper">
+          <swiper-item>
+            <navigator url="./detail/detail" hover-class="navigator-hover">
+              <view class="home_swiper_box_first">
+                <view></view>
+                <view class="home-swiper_box_company">访问浙江中烟工业有限责任公司</view>
+                <view class="home-swiper_box_time">5月23日 上午9:10</view>
+              </view>
+            </navigator>
+          </swiper-item>
+
+          <swiper-item>
+            <navigator url="./detail/detail" hover-class="navigator-hover">
+              <view class="home_swiper_box_first">
+                <view class="home-swiper_box_company">访问浙江中烟工业有限责任公司</view>
+                <view class="home-swiper_box_time">5月23日 上午9:10</view>
+              </view>
+            </navigator>
+          </swiper-item>
+        </block>
+      </swiper>
+    </view> -->
+
+    <view class="home_container_main_schedule">
+      <view class="home_container_main_schedule_title">
+        <view class='today_schedule'>{{change_date}}日程</view>
+        <view class='home_more' wx:if='{{today_schedule}}' bindtap='see_more'>更多</view>
+      </view>
+
+      <swiper wx:if='{{today_schedule}}' bindchange='bindchange' current='{{preIndex}}' indicator-active-color="#fdbb1b" previous-margin="30rpx" next-margin="30rpx" class='home_swiper_box'>
+        <block class="home_swiper" wx:for='{{history_record}}' wx:key='{{item.id}}'>
+          <swiper-item class='home_swiper_item' bindlongpress="deleteRecord" data-id="{{item.id}}" data-index="{{index}}">
+            <navigator url="./detail/detail?id={{item.id}}&visit_status={{item.visit_status}}" hover-class="navigator-hover">
+              <view class="home_swiper_box_first {{item.class}}">
+                <view></view>
+                <view>
+                  <view class="home-swiper_box_company">{{item.come_from}}</view>
+                  <view class="home-swiper_box_time">{{item.entry_time}}</view>
+                </view>
+              </view>
+            </navigator>
+          </swiper-item>
+          <!-- <swiper-item class='home_swiper_item'>
+            <navigator url="./detail/detail" hover-class="navigator-hover">
+              <view class="home_swiper_box_first linear_orange">
+                <view></view>
+                <view>
+                  <view class="home-swiper_box_company">访问浙江中烟工业有限责任公司</view>
+                  <view class="home-swiper_box_time">5月23日 上午9:10</view>
+                </view>
+              </view>
+            </navigator>
+          </swiper-item>
+          <swiper-item class='home_swiper_item'>
+            <navigator url="./detail/detail" hover-class="navigator-hover">
+              <view class="home_swiper_box_first linear_red">
+                <view></view>
+                <view>
+                  <view class="home-swiper_box_company">访问浙江中烟工业有限责任公司</view>
+                  <view class="home-swiper_box_time">5月23日 上午9:10</view>
+                </view>
+              </view>
+            </navigator>
+          </swiper-item>
+          <swiper-item class='home_swiper_item'>
+            <navigator url="./detail/detail" hover-class="navigator-hover">
+              <view class="home_swiper_box_first linear_red">
+                <view></view>
+                <view>
+                  <view class="home-swiper_box_company">访问浙江中烟工业有限责任公司</view>
+                  <view class="home-swiper_box_time">5月23日 上午9:10</view>
+                </view>
+              </view>
+            </navigator>
+          </swiper-item> -->
+
+
+        </block>
+      </swiper>
+
+      <view wx:if='{{ohter_schedule}}' class='overflow_height'>
+        <block wx:for='{{history_record_other}}' wx:key="{{item.id}}" >
+          <navigator url="./detail/detail?id={{item.id}}&visit_status={{item.visit_status}}" hover-class="navigator-hover">
+            <view class="touch_item {{item.isTouchMove ? 'touch-move-active' : ''}} {{item.class}} border_radius" bindtouchstart="touchstart" bindtouchmove="touchmove" bindlongpress="deleteRecord" data-id="{{item.id}}" data-index="{{index}}">
+              <view class='content'>
+                <view class="content_company">{{item.come_from}}</view>
+                <view class="content_time">{{item.entry_time}}</view>
+              </view>
+              <!-- <view class="del" catchtap="del" data-index="{{index}}">删除</view> -->
+            </view>
+          </navigator>
+
+          <view class='gray_line'></view>
+        </block>
+
+        <!-- <view class="home_container_main_more" bindtap='see_more'>查看更多</view> -->
+      </view>
+
+      <!-- <navigator url="./detail/detail" hover-class="navigator-hover">
+        <view class="home_swiper_box_first linear_blue touch-item {{item.isTouchMove ? 'touch-move-active' : ''}}" data-index="{{index}}" bindtouchstart="touchstart" bindtouchmove="touchmove">
+          <view>
+            <view class="home-swiper_box_company">访问浙江中烟工业有限责任公司</view>
+            <view class="home-swiper_box_time">5月23日 上午9:10</view>
+          </view>
+        </view>
+      </navigator>
+
+      <view class='gray_line'></view>
+
+      <navigator url="./detail/detail" hover-class="navigator-hover">
+        <view class="home_swiper_box_first linear_blue">
+          <view></view>
+          <view class="home-swiper_box_company">访问浙江中烟工业有限责任公司</view>
+          <view class="home-swiper_box_time">5月23日 上午9:10</view>
+        </view>
+      </navigator>
+
+      <view class='gray_line'></view>
+
+      <navigator url="./detail/detail" hover-class="navigator-hover">
+        <view class="home_swiper_box_first linear_blue">
+          <view></view>
+          <view class="home-swiper_box_company">访问浙江中烟工业有限责任公司</view>
+          <view class="home-swiper_box_time">5月23日 上午9:10</view>
+        </view>
+      </navigator>
+
+      <view class='gray_line'></view> -->
+      
+    </view>
+
+    <!-- <view class='newApply_start'>
+      <button class='apply_btn' bindtap='modify_apply'>重新申请</button>
+    </view> -->
+
+  </view>
+
+  <!-- <view class='create_apply' bindtap='applay'>
+    <view class='create_apply_inner'>
+      <view class='create_apply_inner_circul'>+</view>
+    </view>
+  </view> -->
+
+  <view class="home_container_footer"></view>
+
+  <!-- <view class="flex fix_nav_wp">
+    <block wx:for="{{navData}}">
+      <template is="tabBar" data="{{...item}}" />
+    </block>
+  </view> -->
+
+</view>
+</template>

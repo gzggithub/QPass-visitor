@@ -1,0 +1,19 @@
+<!--pages/mine/detail/modify/modify.wxml-->
+<view class='modify_container'>
+  <view class='modify_username'>
+    <input type='text' value='{{userInfo.nickName}}' />
+  </view>
+
+  <!-- <view class='modify_username' wx:if='{{true}}'>
+    <input type='text' value='{{userInfo.company}}' />
+  </view>
+
+  <view class='modify_username' wx:if='{{true}}'>
+    <input type='text' value='{{userInfo.remark}}' />
+  </view> -->
+
+  <view class='modify_save' bindtap='modifySave'>
+    <button>确认修改</button>
+  </view>
+
+</view>

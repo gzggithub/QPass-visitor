@@ -1,0 +1,77 @@
+<!--pages/mine/detail/detail.wxml-->
+<view class="mine_detail_container">
+  <view style='background-color:#FFFFFF'>
+    <view class="detail_item">
+      <view class="detail_item_left">头像：</view>
+      <view class="detail_item_right">
+        <image src='{{avatar}}' mode='aspectFit' class='mine_header_head_one_img' alt='请上传图像'></image>
+      </view>
+    </view>
+
+    <view class="detail_item">
+      <view class="detail_item_left">姓名：</view>
+      <view class="detail_item_right" bindtap='changenickName'>{{real_name}}
+        <!-- <input name='realName' type="text" value='{{real_name}}' maxlength='12' bindinput="bindRealNameEvent" placeholder='请输入姓名' /> -->
+      </view>
+    </view>
+
+    <modal hidden="{{hiddenNickNamePut}}" title="姓名" confirm-text="确认" cancel-text="取消" bindcancel="cancel" bindconfirm="confirm">
+      <input class='modalInput' cursor-spacing='130' type='text' maxlength='12' placeholder="请输入姓名" bindinput='inputNickName' value='{{real_name}}' />
+    </modal>
+
+    <view class="detail_item">
+      <view class="detail_item_left">性別：</view>
+      <view class="detail_item_right">
+        <picker bindchange="bindViewEvent" data-model="component" data-method="bindSelect" data-name="index" value='{{index}}' range="{{gender}}">
+          <view class="label-right">
+            {{gender[index]}}
+          </view>
+        </picker>
+      </view>
+    </view>
+
+    <view class="detail_item">
+      <view class="detail_item_left">电话号码：</view>
+      <view class="detail_item_right" bindtap='changeTelNum'>{{phone_number}}
+        <!-- <input name='tel' type="number" value='{{phone_number}}' bindinput ="mobileInput" maxlength='11' placeholder='请输入手机号' /> -->
+      </view>
+    </view>
+
+    <modal hidden="{{hiddenTelNumPut}}" title="电话号码" confirm-text="确认" cancel-text="取消" bindcancel="cancel" bindconfirm="confirm">
+      <input class='modalInput' cursor-spacing='130' type='number' name="tel" bindinput='inputTelNum' value='{{phone_number}}' maxlength='11' placeholder='请输入手机号'/>
+    </modal>
+
+    <view class="detail_item">
+      <view class="detail_item_left">地区：</view>
+      <view class="detail_item_right">{{province}}-{{city}}</view>
+    </view>
+
+    <view class="detail_item">
+      <view class="detail_item_left">所属单位：</view>
+      <view class="detail_item_right" bindtap="changeCompany">{{company}}
+        <!-- <input name='company' type="text" value='{{company}}' bindinput="bindCompanyEvent" maxlength='16' placeholder='请输入所属单位' /> -->
+      </view>
+    </view>
+
+    <modal style="top: 0;" hidden="{{hiddenCompanyPut}}" title="所属单位" confirm-text="确认" cancel-text="取消" bindcancel="cancel" bindconfirm="confirm">
+      <input class='modalInput' cursor-spacing='130' type='text' bindinput='inputCompany' value='{{company}}' maxlength='16' placeholder='请输入所属单位'/>
+    </modal>
+
+    <view class="detail_item" style='border-bottom: none;'>
+      <view class="detail_item_left">个性签名：</view>
+      <view class="detail_item_right" bindtap='changeSign'>{{remark}}</view>
+    </view>
+
+    <modal hidden="{{hiddenSignPut}}" title="个性签名" confirm-text="确认" cancel-text="取消" bindcancel="cancel" bindconfirm="confirm">
+      <input class='modalInput' cursor-spacing='130' type='text'  bindinput='inputSign' value='{{remark}}' maxlength='18' placeholder="请输入签名"/>
+
+      <!-- <input name='company' type="text" value='{{personalitySignature}}' bindinput="bindCompanyEvent" maxlength='18' placeholder='请输入个性签名' /> -->
+    </modal>
+  </view>
+
+  <view class='fixed_height'></view>
+
+  <!-- <view class='newApply_start finish_apply'>
+    <button class="apply_btn {{finish_suc? 'finish_opacity': ''}}" disabled='{{finish_suc}}' bindtap='modify'>修改</button>
+  </view> -->
+</view>

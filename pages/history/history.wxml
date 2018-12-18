@@ -1,0 +1,908 @@
+<!--pages/history/history.wxml-->
+<view class="history_container">
+
+  <!--顶部导航 start  -->
+  <view class="history_swiper_tab">
+    <scroll-view class="scroll-view_H" scroll-x style="width:100%">
+      <view class="history_swiper_tab_list {{currentTab==0 ? 'on_orange' : ''}}" data-current="0" bindtap="switchNav">等待</view>
+      <view class="history_swiper_tab_list {{currentTab==1 ? 'on_blue' : ''}}" data-current="1" bindtap="switchNav">通过</view>
+      <view class="history_swiper_tab_list {{currentTab==2 ? 'on_red' : ''}}" data-current="2" bindtap="switchNav">拒绝</view>
+    </scroll-view>
+
+  </view>
+
+  <swiper current="{{currentTab}}" duration="300" bindchange="bindChange" class='history_swiper1_box' style="height: {{clientHeight?clientHeight+'px':'auto'}}" wx:if='{{true}}'>
+
+    <swiper-item>
+      <scroll-view scroll-y="{{true}}" style="height: {{clientHeight ? clientHeight + 'px' : 'auto'}}">
+        <view class='no_history_record' wx:if='{{padding}}'>
+          <view class='no_record'>
+            <image src='../../image/kzt-icon.png' mode='aspectFit' ></image> 
+          </view>
+          <view class='no_record'>
+            <text class='no_record_text'>暂无记录哟～</text>
+          </view>
+          <view class='click_apply'>
+            <button class='click_apply_btn' bindtap='click_apply'>点击申请</button>
+          </view>
+        </view>
+
+        <block wx:if='{{events.padding}}'>
+          <block wx:if='{{events.padding.Dec}}'>
+            <view class='history_big_box'>
+              <view class='history_big_month'>12月</view>
+
+              <block wx:for='{{events.padding.Dec}}' wx:key="{{item.id}}" wx:if='{{item.visit_status === 1}}'>
+                <navigator url="../index/detail/detail?id={{item.id}}&visit_status={{item.visit_status}}" hover-class="navigator-hover">
+                  <view class="touch_item" bindlongpress="deleteRecord" data-id="{{item.id}}" data-index="{{index}}">
+                    <view class='content flex'>
+                      <view class='history_order circul_orange'>{{index+1}}</view>
+                      <view>
+                        <view class="content_company">{{item.come_from}}</view>
+                        <view class="content_time">{{item.entry}}</view>
+                      </view>
+                    </view>
+                    <!-- <view class="del" catchtap="del" data-index="{{index}}">删除</view> -->
+                  </view>
+                </navigator>
+                <view class='gray_line'></view>
+              </block>
+
+            </view>
+          </block>
+
+          <block wx:if='{{events.padding.Nov}}'>
+            <view class='history_big_box'>
+              <view class='history_big_month'>11月</view>
+
+              <block wx:for='{{events.padding.Nov}}' wx:key="{{item.id}}" wx:if='{{item.visit_status === 1}}'>
+                <navigator url="../index/detail/detail?id={{item.id}}&visit_status={{item.visit_status}}" hover-class="navigator-hover">
+                  <view class="touch_item" bindlongpress="deleteRecord" data-id="{{item.id}}" data-index="{{index}}">
+                    <view class='content flex'>
+                      <view class='history_order circul_orange'>{{index+1}}</view>
+                      <view>
+                        <view class="content_company">{{item.come_from}}</view>
+                        <view class="content_time">{{item.entry}}</view>
+                      </view>
+                    </view>
+                    <!-- <view class="del" catchtap="del" data-index="{{index}}">删除</view> -->
+                  </view>
+                </navigator>
+                <view class='gray_line'></view>
+              </block>
+
+            </view>
+          </block>
+
+          <block wx:if='{{events.padding.Oct}}'>
+            <view class='history_big_box'>
+              <view class='history_big_month'>10月</view>
+
+              <block wx:for='{{events.padding.Oct}}' wx:key="{{item.id}}" wx:if='{{item.visit_status === 1}}'>
+                <navigator url="../index/detail/detail?id={{item.id}}&visit_status={{item.visit_status}}" hover-class="navigator-hover">
+                  <view class="touch_item" bindlongpress="deleteRecord" data-id="{{item.id}}" data-index="{{index}}">
+                    <view class='content flex'>
+                      <view class='history_order circul_orange'>{{index+1}}</view>
+                      <view>
+                        <view class="content_company">{{item.come_from}}</view>
+                        <view class="content_time">{{item.entry}}</view>
+                      </view>
+                    </view>
+                    <!-- <view class="del" catchtap="del" data-index="{{index}}">删除</view> -->
+                  </view>
+                </navigator>
+                <view class='gray_line'></view>
+              </block>
+
+            </view>
+          </block>
+
+          <block wx:if='{{events.padding.Sep}}'>
+            <view class='history_big_box'>
+              <view class='history_big_month'>9月</view>
+
+              <block wx:for='{{events.padding.Sep}}' wx:key="{{item.id}}" wx:if='{{item.visit_status === 1}}'>
+                <navigator url="../index/detail/detail?id={{item.id}}&visit_status={{item.visit_status}}" hover-class="navigator-hover">
+                  <view class="touch_item" bindlongpress="deleteRecord" data-id="{{item.id}}" data-index="{{index}}">
+                    <view class='content flex'>
+                      <view class='history_order circul_orange'>{{index+1}}</view>
+                      <view>
+                        <view class="content_company">{{item.come_from}}</view>
+                        <view class="content_time">{{item.entry}}</view>
+                      </view>
+                    </view>
+                    <!-- <view class="del" catchtap="del" data-index="{{index}}">删除</view> -->
+                  </view>
+                </navigator>
+                <view class='gray_line'></view>
+              </block>
+
+            </view>
+          </block>
+
+          <block wx:if='{{events.padding.Aug}}'>
+            <view class='history_big_box'>
+              <view class='history_big_month'>8月</view>
+
+              <block wx:for='{{events.padding.Aug}}' wx:key="{{item.id}}" wx:if='{{item.visit_status === 1}}'>
+                <navigator url="../index/detail/detail?id={{item.id}}&visit_status={{item.visit_status}}" hover-class="navigator-hover">
+                  <view class="touch_item" bindlongpress="deleteRecord" data-id="{{item.id}}" data-index="{{index}}">
+                    <view class='content flex'>
+                      <view class='history_order circul_orange'>{{index+1}}</view>
+                      <view>
+                        <view class="content_company">{{item.come_from}}</view>
+                        <view class="content_time">{{item.entry}}</view>
+                      </view>
+                    </view>
+                    <!-- <view class="del" catchtap="del" data-index="{{index}}">删除</view> -->
+                  </view>
+                </navigator>
+                <view class='gray_line'></view>
+              </block>
+
+            </view>
+          </block>
+
+          <block wx:if='{{events.padding.Jul}}'>
+            <view class='history_big_box'>
+              <view class='history_big_month'>7月</view>
+
+              <block wx:for='{{events.padding.Jul}}' wx:key="{{item.id}}" wx:if='{{item.visit_status === 1}}'>
+                <navigator url="../index/detail/detail?id={{item.id}}&visit_status={{item.visit_status}}" hover-class="navigator-hover">
+                  <view class="touch_item" bindlongpress="deleteRecord" data-id="{{item.id}}" data-index="{{index}}">
+                    <view class='content flex'>
+                      <view class='history_order circul_orange'>{{index+1}}</view>
+                      <view>
+                        <view class="content_company">{{item.come_from}}</view>
+                        <view class="content_time">{{item.entry}}</view>
+                      </view>
+                    </view>
+                    <!-- <view class="del" catchtap="del" data-index="{{index}}">删除</view> -->
+                  </view>
+                </navigator>
+                <view class='gray_line'></view>
+              </block>
+
+            </view>
+          </block>
+
+          <block wx:if='{{events.padding.Jun}}'>
+            <view class='history_big_box'>
+              <view class='history_big_month'>6月</view>
+
+              <block wx:for='{{events.padding.Jun}}' wx:key="{{item.id}}" wx:if='{{item.visit_status === 1}}'>
+                <navigator url="../index/detail/detail?id={{item.id}}&visit_status={{item.visit_status}}" hover-class="navigator-hover">
+                  <view class="touch_item" bindlongpress="deleteRecord" data-id="{{item.id}}" data-index="{{index}}">
+                    <view class='content flex'>
+                      <view class='history_order circul_orange'>{{index+1}}</view>
+                      <view>
+                        <view class="content_company">{{item.come_from}}</view>
+                        <view class="content_time">{{item.entry}}</view>
+                      </view>
+                    </view>
+                    <!-- <view class="del" catchtap="del" data-index="{{index}}">删除</view> -->
+                  </view>
+                </navigator>
+                <view class='gray_line'></view>
+              </block>
+
+            </view>
+          </block>
+
+          <block wx:if='{{events.padding.May}}'>
+            <view class='history_big_box'>
+              <view class='history_big_month'>5月</view>
+
+              <block wx:for='{{events.padding.May}}' wx:key="{{item.id}}" wx:if='{{item.visit_status === 1}}'>
+                <navigator url="../index/detail/detail?id={{item.id}}&visit_status={{item.visit_status}}" hover-class="navigator-hover">
+                  <view class="touch_item" bindlongpress="deleteRecord" data-id="{{item.id}}" data-index="{{index}}">
+                    <view class='content flex'>
+                      <view class='history_order circul_orange'>{{index+1}}</view>
+                      <view>
+                        <view class="content_company">{{item.come_from}}</view>
+                        <view class="content_time">{{item.entry}}</view>
+                      </view>
+                    </view>
+                    <!-- <view class="del" catchtap="del" data-index="{{index}}">删除</view> -->
+                  </view>
+                </navigator>
+                <view class='gray_line'></view>
+              </block>
+
+            </view>
+          </block>
+
+          <block wx:if='{{events.padding.Apr}}'>
+            <view class='history_big_box'>
+              <view class='history_big_month'>4月</view>
+
+              <block wx:for='{{events.padding.Apr}}' wx:key="{{item.id}}" wx:if='{{item.visit_status === 1}}'>
+                <navigator url="../index/detail/detail?id={{item.id}}&visit_status={{item.visit_status}}" hover-class="navigator-hover">
+                  <view class="touch_item" bindlongpress="deleteRecord" data-id="{{item.id}}" data-index="{{index}}">
+                    <view class='content flex'>
+                      <view class='history_order circul_orange'>{{index+1}}</view>
+                      <view>
+                        <view class="content_company">{{item.come_from}}</view>
+                        <view class="content_time">{{item.entry}}</view>
+                      </view>
+                    </view>
+                    <!-- <view class="del" catchtap="del" data-index="{{index}}">删除</view> -->
+                  </view>
+                </navigator>
+                <view class='gray_line'></view>
+              </block>
+
+            </view>
+          </block>
+
+          <block wx:if='{{events.padding.Mar}}'>
+            <view class='history_big_box'>
+              <view class='history_big_month'>3月</view>
+
+              <block wx:for='{{events.padding.Mar}}' wx:key="{{item.id}}" wx:if='{{item.visit_status === 1}}'>
+                <navigator url="../index/detail/detail?id={{item.id}}&visit_status={{item.visit_status}}" hover-class="navigator-hover">
+                  <view class="touch_item" bindlongpress="deleteRecord" data-id="{{item.id}}" data-index="{{index}}">
+                    <view class='content flex'>
+                      <view class='history_order circul_orange'>{{index+1}}</view>
+                      <view>
+                        <view class="content_company">{{item.come_from}}</view>
+                        <view class="content_time">{{item.entry}}</view>
+                      </view>
+                    </view>
+                    <!-- <view class="del" catchtap="del" data-index="{{index}}">删除</view> -->
+                  </view>
+                </navigator>
+                <view class='gray_line'></view>
+              </block>
+
+            </view>
+          </block>
+
+          <block wx:if='{{events.padding.Feb}}'>
+            <view class='history_big_box'>
+              <view class='history_big_month'>2月</view>
+
+              <block wx:for='{{events.padding.Feb}}' wx:key="{{item.id}}" wx:if='{{item.visit_status === 1}}'>
+                <navigator url="../index/detail/detail?id={{item.id}}&visit_status={{item.visit_status}}" hover-class="navigator-hover">
+                  <view class="touch_item" bindlongpress="deleteRecord" data-id="{{item.id}}" data-index="{{index}}">
+                    <view class='content flex'>
+                      <view class='history_order circul_orange'>{{index+1}}</view>
+                      <view>
+                        <view class="content_company">{{item.come_from}}</view>
+                        <view class="content_time">{{item.entry}}</view>
+                      </view>
+                    </view>
+                    <!-- <view class="del" catchtap="del" data-index="{{index}}">删除</view> -->
+                  </view>
+                </navigator>
+                <view class='gray_line'></view>
+              </block>
+
+            </view>
+          </block>
+
+          <block wx:if='{{events.padding.Jan}}'>
+            <view class='history_big_box'>
+              <view class='history_big_month'>1月</view>
+
+              <block wx:for='{{events.padding.Jan}}' wx:key="{{item.id}}" wx:if='{{item.visit_status === 1}}'>
+                <navigator url="../index/detail/detail?id={{item.id}}&visit_status={{item.visit_status}}" hover-class="navigator-hover">
+                  <view class="touch_item" bindlongpress="deleteRecord" data-id="{{item.id}}" data-index="{{index}}">
+                    <view class='content flex'>
+                      <view class='history_order circul_orange'>{{index+1}}</view>
+                      <view>
+                        <view class="content_company">{{item.come_from}}</view>
+                        <view class="content_time">{{item.entry}}</view>
+                      </view>
+                    </view>
+                    <!-- <view class="del" catchtap="del" data-index="{{index}}">删除</view> -->
+                  </view>
+                </navigator>
+                <view class='gray_line'></view>
+              </block>
+
+            </view>
+          </block>
+        </block>
+
+      </scroll-view>
+    </swiper-item>
+
+    <swiper-item>
+      <scroll-view scroll-y="{{true}}" style="height: {{clientHeight?clientHeight+'px':'auto'}}">
+        <view class='no_history_record' wx:if='{{accepted}}'>
+          <view class='no_record' >
+            <image src='../../image/kzt-icon.png' mode='aspectFit' ></image> 
+          </view>
+          <view class='no_record'>
+            <text class='no_record_text'>暂无记录哟～</text>
+          </view>
+          <view class='click_apply'>
+            <button class='click_apply_btn' bindtap='click_apply'>点击申请</button>
+          </view>
+        </view>
+
+        <block wx:if='{{events.accepted}}'>
+
+          <block wx:if='{{events.accepted.Dec}}'>
+            <view class='history_big_box'>
+              <view class='history_big_month'>12月</view>
+
+              <block wx:for='{{events.accepted.Dec}}' wx:key="{{item.id}}" wx:if='{{item.visit_status === 2}}'>
+                <navigator url="../index/detail/detail?id={{item.id}}&visit_status={{item.visit_status}}" hover-class="navigator-hover">
+                  <view class="touch_item" bindlongpress="deleteRecord" data-id="{{item.id}}" data-index="{{index}}">
+                    <view class='content flex'>
+                      <view class='history_order circul_blue'>{{index+1}}</view>
+                      <view>
+                        <view class="content_company">{{item.come_from}}</view>
+                        <view class="content_time">{{item.entry}}</view>
+                      </view>
+                    </view>
+                    <!-- <view class="del" catchtap="del" data-index="{{index}}">删除</view> -->
+                  </view>
+                </navigator>
+                <view class='gray_line'></view>
+              </block>
+
+            </view>
+          </block>
+
+          <block wx:if='{{events.accepted.Nov}}'>
+            <view class='history_big_box'>
+              <view class='history_big_month'>11月</view>
+
+              <block wx:for='{{events.accepted.Nov}}' wx:key="{{item.id}}" wx:if='{{item.visit_status === 2}}'>
+                <navigator url="../index/detail/detail?id={{item.id}}&visit_status={{item.visit_status}}" hover-class="navigator-hover">
+                  <view class="touch_item" bindlongpress="deleteRecord" data-id="{{item.id}}" data-index="{{index}}">
+                    <view class='content flex'>
+                      <view class='history_order circul_blue'>{{index+1}}</view>
+                      <view>
+                        <view class="content_company">{{item.come_from}}</view>
+                        <view class="content_time">{{item.entry}}</view>
+                      </view>
+                    </view>
+                    <!-- <view class="del" catchtap="del" data-index="{{index}}">删除</view> -->
+                  </view>
+                </navigator>
+                <view class='gray_line'></view>
+              </block>
+
+            </view>
+          </block>
+
+          <block wx:if='{{events.accepted.Oct}}'>
+            <view class='history_big_box'>
+              <view class='history_big_month'>10月</view>
+
+              <block wx:for='{{events.accepted.Oct}}' wx:key="{{item.id}}" wx:if='{{item.visit_status === 2}}'>
+                <navigator url="../index/detail/detail?id={{item.id}}&visit_status={{item.visit_status}}" hover-class="navigator-hover">
+                  <view class="touch_item" bindlongpress="deleteRecord" data-id="{{item.id}}" data-index="{{index}}">
+                    <view class='content flex'>
+                      <view class='history_order circul_blue'>{{index+1}}</view>
+                      <view>
+                        <view class="content_company">{{item.come_from}}</view>
+                        <view class="content_time">{{item.entry}}</view>
+                      </view>
+                    </view>
+                    <!-- <view class="del" catchtap="del" data-index="{{index}}">删除</view> -->
+                  </view>
+                </navigator>
+                <view class='gray_line'></view>
+              </block>
+
+            </view>
+          </block>
+
+          <block wx:if='{{events.accepted.Sep}}'>
+            <view class='history_big_box'>
+              <view class='history_big_month'>9月</view>
+
+              <block wx:for='{{events.accepted.Sep}}' wx:key="{{item.id}}" wx:if='{{item.visit_status === 2}}'>
+                <navigator url="../index/detail/detail?id={{item.id}}&visit_status={{item.visit_status}}" hover-class="navigator-hover">
+                  <view class="touch_item" bindlongpress="deleteRecord" data-id="{{item.id}}" data-index="{{index}}">
+                    <view class='content flex'>
+                      <view class='history_order circul_blue'>{{index+1}}</view>
+                      <view>
+                        <view class="content_company">{{item.come_from}}</view>
+                        <view class="content_time">{{item.entry}}</view>
+                      </view>
+                    </view>
+                    <!-- <view class="del" catchtap="del" data-index="{{index}}">删除</view> -->
+                  </view>
+                </navigator>
+                <view class='gray_line'></view>
+              </block>
+
+            </view>
+          </block>
+
+          <block wx:if='{{events.accepted.Aug}}'>
+            <view class='history_big_box'>
+              <view class='history_big_month'>8月</view>
+
+              <block wx:for='{{events.accepted.Aug}}' wx:key="{{item.id}}" wx:if='{{item.visit_status === 2}}'>
+                <navigator url="../index/detail/detail?id={{item.id}}&visit_status={{item.visit_status}}" hover-class="navigator-hover">
+                  <view class="touch_item" bindlongpress="deleteRecord" data-id="{{item.id}}" data-index="{{index}}">
+                    <view class='content flex'>
+                      <view class='history_order circul_blue'>{{index+1}}</view>
+                      <view>
+                        <view class="content_company">{{item.come_from}}</view>
+                        <view class="content_time">{{item.entry}}</view>
+                      </view>
+                    </view>
+                    <!-- <view class="del" catchtap="del" data-index="{{index}}">删除</view> -->
+                  </view>
+                </navigator>
+                <view class='gray_line'></view>
+              </block>
+
+            </view>
+          </block>
+
+          <block wx:if='{{events.accepted.Jul}}'>
+            <view class='history_big_box'>
+              <view class='history_big_month'>7月</view>
+
+              <block wx:for='{{events.accepted.Jul}}' wx:key="{{item.id}}" wx:if='{{item.visit_status === 2}}'>
+                <navigator url="../index/detail/detail?id={{item.id}}&visit_status={{item.visit_status}}" hover-class="navigator-hover">
+                  <view class="touch_item" bindlongpress="deleteRecord" data-id="{{item.id}}" data-index="{{index}}">
+                    <view class='content flex'>
+                      <view class='history_order circul_blue'>{{index+1}}</view>
+                      <view>
+                        <view class="content_company">{{item.come_from}}</view>
+                        <view class="content_time">{{item.entry}}</view>
+                      </view>
+                    </view>
+                    <!-- <view class="del" catchtap="del" data-index="{{index}}">删除</view> -->
+                  </view>
+                </navigator>
+                <view class='gray_line'></view>
+              </block>
+
+            </view>
+          </block>
+
+          <block wx:if='{{events.accepted.Jun}}'>
+            <view class='history_big_box'>
+              <view class='history_big_month'>6月</view>
+
+              <block wx:for='{{events.accepted.Jun}}' wx:key="{{item.id}}" wx:if='{{item.visit_status === 2}}'>
+                <navigator url="../index/detail/detail?id={{item.id}}&visit_status={{item.visit_status}}" hover-class="navigator-hover">
+                  <view class="touch_item" bindlongpress="deleteRecord" data-id="{{item.id}}" data-index="{{index}}">
+                    <view class='content flex'>
+                      <view class='history_order circul_blue'>{{index+1}}</view>
+                      <view>
+                        <view class="content_company">{{item.come_from}}</view>
+                        <view class="content_time">{{item.entry}}</view>
+                      </view>
+                    </view>
+                    <!-- <view class="del" catchtap="del" data-index="{{index}}">删除</view> -->
+                  </view>
+                </navigator>
+                <view class='gray_line'></view>
+              </block>
+
+            </view>
+          </block>
+
+          <block wx:if='{{events.accepted.May}}'>
+            <view class='history_big_box'>
+              <view class='history_big_month'>5月</view>
+
+              <block wx:for='{{events.accepted.May}}' wx:key="{{item.id}}" wx:if='{{item.visit_status === 2}}'>
+                <navigator url="../index/detail/detail?id={{item.id}}&visit_status={{item.visit_status}}" hover-class="navigator-hover">
+                  <view class="touch_item" bindlongpress="deleteRecord" data-id="{{item.id}}" data-index="{{index}}">
+                    <view class='content flex'>
+                      <view class='history_order circul_blue'>{{index+1}}</view>
+                      <view>
+                        <view class="content_company">{{item.come_from}}</view>
+                        <view class="content_time">{{item.entry}}</view>
+                      </view>
+                    </view>
+                    <!-- <view class="del" catchtap="del" data-index="{{index}}">删除</view> -->
+                  </view>
+                </navigator>
+                <view class='gray_line'></view>
+              </block>
+
+            </view>
+          </block>
+
+          <block wx:if='{{events.accepted.Apr}}'>
+            <view class='history_big_box'>
+              <view class='history_big_month'>4月</view>
+
+              <block wx:for='{{events.accepted.Apr}}' wx:key="{{item.id}}" wx:if='{{item.visit_status === 2}}'>
+                <navigator url="../index/detail/detail?id={{item.id}}&visit_status={{item.visit_status}}" hover-class="navigator-hover">
+                  <view class="touch_item" bindlongpress="deleteRecord" data-id="{{item.id}}" data-index="{{index}}">
+                    <view class='content flex'>
+                      <view class='history_order circul_blue'>{{index+1}}</view>
+                      <view>
+                        <view class="content_company">{{item.come_from}}</view>
+                        <view class="content_time">{{item.entry}}</view>
+                      </view>
+                    </view>
+                    <!-- <view class="del" catchtap="del" data-index="{{index}}">删除</view> -->
+                  </view>
+                </navigator>
+                <view class='gray_line'></view>
+              </block>
+
+            </view>
+          </block>
+
+          <block wx:if='{{events.accepted.Mar}}'>
+            <view class='history_big_box'>
+              <view class='history_big_month'>3月</view>
+
+              <block wx:for='{{events.accepted.Mar}}' wx:key="{{item.id}}" wx:if='{{item.visit_status === 2}}'>
+                <navigator url="../index/detail/detail?id={{item.id}}&visit_status={{item.visit_status}}" hover-class="navigator-hover">
+                  <view class="touch_item" bindlongpress="deleteRecord" data-id="{{item.id}}" data-index="{{index}}">
+                    <view class='content flex'>
+                      <view class='history_order circul_blue'>{{index+1}}</view>
+                      <view>
+                        <view class="content_company">{{item.come_from}}</view>
+                        <view class="content_time">{{item.entry}}</view>
+                      </view>
+                    </view>
+                    <!-- <view class="del" catchtap="del" data-index="{{index}}">删除</view> -->
+                  </view>
+                </navigator>
+                <view class='gray_line'></view>
+              </block>
+
+            </view>
+          </block>
+
+          <block wx:if='{{events.accepted.Feb}}'>
+            <view class='history_big_box'>
+              <view class='history_big_month'>2月</view>
+
+              <block wx:for='{{events.accepted.Feb}}' wx:key="{{item.id}}" wx:if='{{item.visit_status === 2}}'>
+                <navigator url="../index/detail/detail?id={{item.id}}&visit_status={{item.visit_status}}" hover-class="navigator-hover">
+                  <view class="touch_item" bindlongpress="deleteRecord" data-id="{{item.id}}" data-index="{{index}}">
+                    <view class='content flex'>
+                      <view class='history_order circul_blue'>{{index+1}}</view>
+                      <view>
+                        <view class="content_company">{{item.come_from}}</view>
+                        <view class="content_time">{{item.entry}}</view>
+                      </view>
+                    </view>
+                    <!-- <view class="del" catchtap="del" data-index="{{index}}">删除</view> -->
+                  </view>
+                </navigator>
+                <view class='gray_line'></view>
+              </block>
+
+            </view>
+          </block>
+
+          <block wx:if='{{events.accepted.Jan}}'>
+            <view class='history_big_box'>
+              <view class='history_big_month'>1月</view>
+
+              <block wx:for='{{events.accepted.Jan}}' wx:key="{{item.id}}" wx:if='{{item.visit_status === 2}}'>
+                <navigator url="../index/detail/detail?id={{item.id}}&visit_status={{item.visit_status}}" hover-class="navigator-hover">
+                  <view class="touch_item" bindlongpress="deleteRecord" data-id="{{item.id}}" data-index="{{index}}">
+                    <view class='content flex'>
+                      <view class='history_order circul_blue'>{{index+1}}</view>
+                      <view>
+                        <view class="content_company">{{item.come_from}}</view>
+                        <view class="content_time">{{item.entry}}</view>
+                      </view>
+                    </view>
+                    <!-- <view class="del" catchtap="del" data-index="{{index}}">删除</view> -->
+                  </view>
+                </navigator>
+                <view class='gray_line'></view>
+              </block>
+
+            </view>
+          </block>
+        </block>
+        <view class="weui-loadmore" hidden="{{isHideLoadMore}}">
+          <view class="weui-loading"></view>
+          <view class="weui-loadmore__tips">正在加载</view>
+        </view>
+      </scroll-view>
+    </swiper-item>
+
+    <swiper-item>
+      <!-- scroll-view 不能使用下拉刷新 onPullDownRefresh-->
+      <scroll-view scroll-y="{{true}}" style="height: {{clientHeight?clientHeight+'px':'auto'}}">
+        <view class='no_history_record' wx:if='{{rejected}}'>
+          <view class='no_record' >
+            <image src='../../image/kzt-icon.png' mode='aspectFit' ></image> 
+          </view>
+          <view class='no_record'>
+            <text class='no_record_text'>暂无记录哟～</text>
+          </view>
+          <view class='click_apply'>
+            <button class='click_apply_btn' bindtap='click_apply'>点击申请</button>
+          </view>
+        </view>
+
+        <block wx:if='{{events.rejected}}'>
+          <block wx:if='{{events.rejected.Dec}}'>
+            <view class='history_big_box'>
+              <view class='history_big_month'>12月</view>
+
+              <block wx:for='{{events.rejected.Dec}}' wx:key="{{item.id}}" wx:if='{{item.visit_status === 3}}'>
+                <navigator url="../index/detail/detail?id={{item.id}}&visit_status={{item.visit_status}}" hover-class="navigator-hover">
+                  <view class="touch_item" bindlongpress="deleteRecord" data-id="{{item.id}}" data-index="{{index}}">
+                    <view class='content flex'>
+                      <view class='history_order circul_red'>{{index+1}}</view>
+                      <view>
+                        <view class="content_company">{{item.come_from}}</view>
+                        <view class="content_time">{{item.entry}}</view>
+                      </view>
+                    </view>
+
+                  </view>
+                </navigator>
+                <view class='gray_line'></view>
+              </block>
+
+            </view>
+          </block>
+
+          <block wx:if='{{events.rejected.Nov}}'>
+            <view class='history_big_box'>
+              <view class='history_big_month'>11月</view>
+
+              <block wx:for='{{events.rejected.Nov}}' wx:key="{{item.id}}" wx:if='{{item.visit_status === 3}}'>
+                <navigator url="../index/detail/detail?id={{item.id}}&visit_status={{item.visit_status}}" hover-class="navigator-hover">
+                  <view class="touch_item" bindlongpress="deleteRecord" data-id="{{item.id}}" data-index="{{index}}">
+                    <view class='content flex'>
+                      <view class='history_order circul_red'>{{index+1}}</view>
+                      <view>
+                        <view class="content_company">{{item.come_from}}</view>
+                        <view class="content_time">{{item.entry}}</view>
+                      </view>
+                    </view>
+
+                  </view>
+                </navigator>
+                <view class='gray_line'></view>
+              </block>
+
+            </view>
+          </block>
+
+          <block wx:if='{{events.rejected.Oct}}'>
+            <view class='history_big_box'>
+              <view class='history_big_month'>10月</view>
+
+              <block wx:for='{{events.rejected.Oct}}' wx:key="{{item.id}}" wx:if='{{item.visit_status === 3}}'>
+                <navigator url="../index/detail/detail?id={{item.id}}&visit_status={{item.visit_status}}" hover-class="navigator-hover">
+                  <view class="touch_item" bindlongpress="deleteRecord" data-id="{{item.id}}" data-index="{{index}}">
+                    <view class='content flex'>
+                      <view class='history_order circul_red'>{{index+1}}</view>
+                      <view>
+                        <view class="content_company">{{item.come_from}}</view>
+                        <view class="content_time">{{item.entry}}</view>
+                      </view>
+                    </view>
+
+                  </view>
+                </navigator>
+                <view class='gray_line'></view>
+              </block>
+
+            </view>
+          </block>
+
+          <block wx:if='{{events.rejected.Sep}}'>
+            <view class='history_big_box'>
+              <view class='history_big_month'>9月</view>
+
+              <block wx:for='{{events.rejected.Sep}}' wx:key="{{item.id}}" wx:if='{{item.visit_status === 3}}'>
+                <navigator url="../index/detail/detail?id={{item.id}}&visit_status={{item.visit_status}}" hover-class="navigator-hover">
+                  <view class="touch_item" bindlongpress="deleteRecord" data-id="{{item.id}}" data-index="{{index}}">
+                    <view class='content flex'>
+                      <view class='history_order circul_red'>{{index+1}}</view>
+                      <view>
+                        <view class="content_company">{{item.come_from}}</view>
+                        <view class="content_time">{{item.entry}}</view>
+                      </view>
+                    </view>
+
+                  </view>
+                </navigator>
+                <view class='gray_line'></view>
+              </block>
+
+            </view>
+          </block>
+
+          <block wx:if='{{events.rejected.Aug}}'>
+            <view class='history_big_box'>
+              <view class='history_big_month'>8月</view>
+
+              <block wx:for='{{events.rejected.Aug}}' wx:key="{{item.id}}" wx:if='{{item.visit_status === 3}}'>
+                <navigator url="../index/detail/detail?id={{item.id}}&visit_status={{item.visit_status}}" hover-class="navigator-hover">
+                  <view class="touch_item" bindlongpress="deleteRecord" data-id="{{item.id}}" data-index="{{index}}">
+                    <view class='content flex'>
+                      <view class='history_order circul_red'>{{index+1}}</view>
+                      <view>
+                        <view class="content_company">{{item.come_from}}</view>
+                        <view class="content_time">{{item.entry}}</view>
+                      </view>
+                    </view>
+
+                  </view>
+                </navigator>
+                <view class='gray_line'></view>
+              </block>
+
+            </view>
+          </block>
+
+          <block wx:if='{{events.rejected.Jul}}'>
+            <view class='history_big_box'>
+              <view class='history_big_month'>7月</view>
+
+              <block wx:for='{{events.rejected.Jul}}' wx:key="{{item.id}}" wx:if='{{item.visit_status === 3}}'>
+                <navigator url="../index/detail/detail?id={{item.id}}&visit_status={{item.visit_status}}" hover-class="navigator-hover">
+                  <view class="touch_item" bindlongpress="deleteRecord" data-id="{{item.id}}" data-index="{{index}}">
+                    <view class='content flex'>
+                      <view class='history_order circul_red'>{{index+1}}</view>
+                      <view>
+                        <view class="content_company">{{item.come_from}}</view>
+                        <view class="content_time">{{item.entry}}</view>
+                      </view>
+                    </view>
+
+                  </view>
+                </navigator>
+                <view class='gray_line'></view>
+              </block>
+
+            </view>
+          </block>
+
+          <block wx:if='{{events.rejected.Jun}}'>
+            <view class='history_big_box'>
+              <view class='history_big_month'>6月</view>
+
+              <block wx:for='{{events.rejected.Jun}}' wx:key="{{item.id}}" wx:if='{{item.visit_status === 3}}'>
+                <navigator url="../index/detail/detail?id={{item.id}}&visit_status={{item.visit_status}}" hover-class="navigator-hover">
+                  <view class="touch_item" bindlongpress="deleteRecord" data-id="{{item.id}}" data-index="{{index}}">
+                    <view class='content flex'>
+                      <view class='history_order circul_red'>{{index+1}}</view>
+                      <view>
+                        <view class="content_company">{{item.come_from}}</view>
+                        <view class="content_time">{{item.entry}}</view>
+                      </view>
+                    </view>
+
+                  </view>
+                </navigator>
+                <view class='gray_line'></view>
+              </block>
+
+            </view>
+          </block>
+
+          <block wx:if='{{events.rejected.May}}'>
+            <view class='history_big_box'>
+              <view class='history_big_month'>5月</view>
+
+              <block wx:for='{{events.rejected.May}}' wx:key="{{item.id}}" wx:if='{{item.visit_status === 3}}'>
+                <navigator url="../index/detail/detail?id={{item.id}}&visit_status={{item.visit_status}}" hover-class="navigator-hover">
+                  <view class="touch_item" bindlongpress="deleteRecord" data-id="{{item.id}}" data-index="{{index}}">
+                    <view class='content flex'>
+                      <view class='history_order circul_red'>{{index+1}}</view>
+                      <view>
+                        <view class="content_company">{{item.come_from}}</view>
+                        <view class="content_time">{{item.entry}}</view>
+                      </view>
+                    </view>
+
+                  </view>
+                </navigator>
+                <view class='gray_line'></view>
+              </block>
+
+            </view>
+          </block>
+
+          <block wx:if='{{events.rejected.Apr}}'>
+            <view class='history_big_box'>
+              <view class='history_big_month'>4月</view>
+
+              <block wx:for='{{events.rejected.Apr}}' wx:key="{{item.id}}" wx:if='{{item.visit_status === 3}}'>
+                <navigator url="../index/detail/detail?id={{item.id}}&visit_status={{item.visit_status}}" hover-class="navigator-hover">
+                  <view class="touch_item" bindlongpress="deleteRecord" data-id="{{item.id}}" data-index="{{index}}">
+                    <view class='content flex'>
+                      <view class='history_order circul_red'>{{index+1}}</view>
+                      <view>
+                        <view class="content_company">{{item.come_from}}</view>
+                        <view class="content_time">{{item.entry}}</view>
+                      </view>
+                    </view>
+
+                  </view>
+                </navigator>
+                <view class='gray_line'></view>
+              </block>
+
+            </view>
+          </block>
+
+          <block wx:if='{{events.rejected.Mar}}'>
+            <view class='history_big_box'>
+              <view class='history_big_month'>3月</view>
+
+              <block wx:for='{{events.rejected.Mar}}' wx:key="{{item.id}}" wx:if='{{item.visit_status === 3}}'>
+                <navigator url="../index/detail/detail?id={{item.id}}&visit_status={{item.visit_status}}" hover-class="navigator-hover">
+                  <view class="touch_item" bindlongpress="deleteRecord" data-id="{{item.id}}" data-index="{{index}}">
+                    <view class='content flex'>
+                      <view class='history_order circul_red'>{{index+1}}</view>
+                      <view>
+                        <view class="content_company">{{item.come_from}}</view>
+                        <view class="content_time">{{item.entry}}</view>
+                      </view>
+                    </view>
+
+                  </view>
+                </navigator>
+                <view class='gray_line'></view>
+              </block>
+
+            </view>
+          </block>
+
+          <block wx:if='{{events.rejected.Feb}}'>
+            <view class='history_big_box'>
+              <view class='history_big_month'>2月</view>
+
+              <block wx:for='{{events.rejected.Feb}}' wx:key="{{item.id}}" wx:if='{{item.visit_status === 3}}'>
+                <navigator url="../index/detail/detail?id={{item.id}}&visit_status={{item.visit_status}}" hover-class="navigator-hover">
+                  <view class="touch_item" bindlongpress="deleteRecord" data-id="{{item.id}}" data-index="{{index}}">
+                    <view class='content flex'>
+                      <view class='history_order circul_red'>{{index+1}}</view>
+                      <view>
+                        <view class="content_company">{{item.come_from}}</view>
+                        <view class="content_time">{{item.entry}}</view>
+                      </view>
+                    </view>
+
+                  </view>
+                </navigator>
+                <view class='gray_line'></view>
+              </block>
+
+            </view>
+          </block>
+
+          <block wx:if='{{events.rejected.Jan}}'>
+            <view class='history_big_box'>
+              <view class='history_big_month'>1月</view>
+
+              <block wx:for='{{events.rejected.Jan}}' wx:key="{{item.id}}" wx:if='{{item.visit_status === 3}}'>
+                <navigator url="../index/detail/detail?id={{item.id}}&visit_status={{item.visit_status}}" hover-class="navigator-hover">
+                  <view class="touch_item" bindlongpress="deleteRecord" data-id="{{item.id}}" data-index="{{index}}">
+                    <view class='content flex'>
+                      <view class='history_order circul_red'>{{index+1}}</view>
+                      <view>
+                        <view class="content_company">{{item.come_from}}</view>
+                        <view class="content_time">{{item.entry}}</view>
+                      </view>
+                    </view>
+
+                  </view>
+                </navigator>
+                <view class='gray_line'></view>
+              </block>
+
+            </view>
+          </block>
+        </block>
+
+
+      </scroll-view>
+    </swiper-item>
+
+  </swiper>
+</view>

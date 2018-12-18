@@ -1,0 +1,81 @@
+<!--pages/mine/mine.wxml-->
+
+<view class="mine_container">
+  <view class="mine_header_one login" wx:if='{{!hasLogin}}'>
+    <button open-type="getUserInfo" class='login_btn' bindgetuserinfo="bindGetUserInfo">登录</button>
+  </view>
+
+  <view class="mine_header_one" wx:if='{{hasLogin}}'>
+    <view class="mine_header_head_one">
+      <image src='{{userInfo.avatarUrl}}' class='mine_header_head_one_img'></image>
+    </view>
+    <view class="mine_header_head_two">
+      <view class="mine_header_head_name">{{userInfo.nickName}}</view>
+      <!-- <view class="mine_header_head_location_icon">
+        <image src='../../image/location.png'></image>
+      </view>
+      <view class="mine_header_head_location">{{province}} {{city}}</view> -->
+    </view>
+    <view class="mine_header_head_two" style='padding: 0;'>
+      <view class="mine_header_head_location_icon">
+        <image src='../../image/location.png'></image>
+      </view>
+      <view class="mine_header_head_location">{{province}} {{city}}</view></view>
+    <!-- <view class="mine_header_head_company">{{company}}杭州快豹科技有限公司</view> -->
+  </view>
+
+  <view class="dialog" style='width:100%;height:{{winHeight}}px;' wx:if='{{getUsersOne}}'>
+    <view class='dialog_rect'>
+      <view class="dialog_content">
+        <view class=''>您已拒绝微信授权。</view>
+      </view>
+      <view class="dialog_footer_one">
+        <view class="dialog_footer_one_left">
+          <navigator open-type='exit' target='miniProgram'>
+            <button>退出</button>
+          </navigator>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="mine_state_L">
+    <view class="mine_state">
+      <view class="mine_state_wait" bindtap='getHistory' data-status='1'>
+          <view class="mine_state_wait_num font_orange">{{waitItems_total}}</view>
+          <view class="mine_state_wait_text">等待</view>
+      </view>
+      <view class="mine_state_pass" bindtap='getHistory' data-status='2'>
+          <view class="mine_state_wait_num font_blue">{{passItems_total}}</view>
+          <view class="mine_state_wait_text">通过</view>
+      </view>
+      <view class="mine_state_reject" bindtap='getHistory' data-status='3'>
+          <view class="mine_state_wait_num font_red">{{rejectItems_total}}</view>
+          <view class="mine_state_wait_text">拒绝</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="mine_main">
+    <view class="mine_main_item" bindtap='getInfo'>
+      <view class="min_main_item_left">
+        <image src='../../image/gr-icon.png'></image>
+      </view>
+      <view class="mine_main_item_center">个人信息</view>
+      <view class="mine_main_item_right"></view>
+    </view>
+
+    <view class="mine_main_item" bindtap='getHistory'>
+      <view class="min_main_item_left">
+        <image src='../../image/ls-icon.png'></image>
+      </view>
+      <view class="mine_main_item_center">历史记录</view>
+      <view class="mine_main_item_right"></view>
+    </view>
+  </view>
+
+  <!-- <view class="mine_loginout">
+    <navigator open-type='exit' target='miniProgram'>退出</navigator>
+  </view> -->
+  <tabbar tabbar="{{tabbar}}"></tabbar>
+</view>

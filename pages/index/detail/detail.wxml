@@ -1,0 +1,112 @@
+<!--pages/index/detail/detail.wxml-->
+<view class="home_detail_container">
+  <view class="common_form">
+    
+    <view class="detail_item detail_item_first linear_orange" wx:if="{{apply_stat==1}}">
+      <view class="detail_item_left">申请状态：</view>
+      <view class="detail_item_right font_orange">审核中</view>
+    </view>
+    <view class="detail_item detail_item_first linear_blue" wx:if="{{apply_stat==2}}">
+      <view class="detail_item_left">申请状态：</view>
+      <view class="detail_item_right font_blue">已通过</view>
+    </view>
+
+    <view class="detail_item detail_item_first linear_red" wx:if="{{apply_stat==3}}">
+      <view class="detail_item_left">申请状态：</view>
+      <view class="detail_item_right font_red">未通过</view>
+    </view>
+
+    <view class="detail_item" wx:if="{{apply_stat==3}}">
+      <view class="detail_item_left">被拒原因：</view>
+      <view class="detail_item_right detail_item_right_reject_reason" bindtap='reject_modal'>{{waitItems_copy.reject_reason}}</view>
+      <!-- <view class="detail_item_right">
+        <input class="" type='text' disabled='disabled' value='{{waitItems_copy.reject_reason}}'/>
+      </view> -->
+    </view>
+  </view>
+
+  <view class="gray_line" wx:if="{{apply_stat != 3}}"></view>
+  <view class="gray_line" wx:if="{{apply_stat != 3}}"></view>
+
+  <view class="detail_item_remark" wx:if="{{apply_stat == 3}}">
+    <!-- <text>注：受访人下午3:10分后有空</text> -->
+  </view>
+
+  <view class="common_form">
+    <view class="detail_item">
+      <view class="detail_item_left">来访目的：</view>
+      <view class="detail_item_right">{{waitItems_copy.purpose}}</view>
+    </view>
+
+    <view class="detail_item">
+      <view class="detail_item_left">访问时间：</view>
+      <view class="detail_item_right font_orange" wx:if="{{apply_stat==1}}">{{entry_time}}-{{leave_time}}</view>
+      <view class="detail_item_right font_blue" wx:if="{{apply_stat==2}}">{{entry_time}}-{{leave_time}}</view>
+      <view class="detail_item_right font_red" wx:if="{{apply_stat==3}}">{{entry_time}}-{{leave_time}}</view>
+    </view>
+  </view>
+
+  <view class="gray_line"></view>
+
+  <view class="common_form">
+    <view class="detail_item">
+      <view class="detail_item_left">受访人：</view>
+      <!-- <view class="detail_item_right">{{waitItems.interviewee_id}}</view> -->
+      <view class="detail_item_right">{{visitor_real_name}}</view>
+    </view>
+
+    <view class="detail_item">
+      <view class="detail_item_left">所属单位：</view>
+      <view class="detail_item_right">{{company}}</view>
+    </view>
+
+    <view class="detail_item">
+      <view class="detail_item_left">在职部门：</view>
+      <view class="detail_item_right">{{department}}</view>
+    </view>
+
+    <view class="detail_item">
+      <view class="detail_item_left">所在职位：</view>
+      <!-- <view class="detail_item_right">{{waitItems.title}}</view> -->
+      <view class="detail_item_right">{{job}}</view>
+    </view>
+  </view>
+
+  <view class="gray_line"></view>
+
+  <view class="common_form">
+    <view class="detail_item">
+      <view class="detail_item_left">访问人：</view>
+      <view class="detail_item_right">{{real_name}}</view>
+    </view>
+
+    <view class="detail_item">
+      <view class="detail_item_left">所属单位：</view>
+      <view class="detail_item_right">{{waitItems.come_from}}</view>
+    </view>
+
+    <view class="detail_item">
+      <view class="detail_item_left">在职部门：</view>
+      <view class="detail_item_right">{{waitItems.department}}</view>
+    </view>
+    <view class="detail_item">
+      <view class="detail_item_left">所在职位：</view>
+      <view class="detail_item_right">{{waitItems.title}}</view>
+    </view>
+  </view>
+
+  <view class="gray_line"></view>
+
+  <!-- <view class="common_form">
+    <view class="detail_item">
+      <view class="detail_item_left">申请时间：</view>
+      <view class="detail_item_right">{{entry_time}}</view>
+    </view>
+  </view> -->
+
+  <view class="gray_line"></view>
+
+  <view class="detail_restar_apply" wx:if="{{apply_stat==3}}" bindtap="restart_apply">重新申请</view>
+
+  <view class="gray_line"></view>
+</view>

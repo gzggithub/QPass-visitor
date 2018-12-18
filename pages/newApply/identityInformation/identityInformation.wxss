@@ -1,0 +1,20 @@
+/* pages/apply/identityInformation/identityInformation.wxss */
+
+.detail_item:last-child {
+  border-bottom: none;
+}
+
+.form_submit {
+  position: relative;
+}
+
+.submit_apply{
+  position: absolute;
+  bottom: -80px;
+  width: 100%;
+}
+
+.newApply_tip{
+  margin-top: 80px;
+  padding-bottom: 0;
+}

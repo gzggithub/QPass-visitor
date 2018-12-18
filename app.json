@@ -1,0 +1,54 @@
+{
+  "pages": [
+    
+    "pages/index/index",
+    "pages/index/detail/detail",
+    "pages/newApply/newApply",
+    "pages/newApply/identityInformation/identityInformation",
+    "pages/newApply/visitedInformation/visitedInformation",
+    "pages/newApply/applySuccess/applySuccess",
+    "pages/mine/mine",
+    "pages/mine/detail/detail",
+    "pages/history/history",
+    "pages/logs/logs"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "首页",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#7A7E83",
+    "selectedColor": "#207ce9",
+    "borderStyle": "white",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "tabbarComponent/icon/rch-icon.png",
+        "selectedIconPath": "tabbarComponent/icon/rc-icon.png",
+        "text": "日程"
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "iconPath": "tabbarComponent/icon/wd-icon.png",
+        "selectedIconPath": "tabbarComponent/icon/wdl-icon.png",
+        "text": "我的"
+      }
+    ]
+  },
+  "plugins": {
+    "calendar": {
+      "version": "1.1.3",
+      "provider": "wx92c68dae5a8bb046"
+    }
+  },
+  "networkTimeout": {
+    "request": 10000,
+    "connectSocket": 10000,
+    "uploadFile": 10000,
+    "downloadFile": 10000
+  },
+  "debug": false
+}

@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "访客系统",
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "calendar": "plugin://calendar/calendar",
+    "tabbar": "../../tabbarComponent/tabbar"
+  }
+}

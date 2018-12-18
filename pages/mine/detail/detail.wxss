@@ -1,0 +1,49 @@
+/* pages/mine/detail/detail.wxss */
+
+.mine_detail_container {
+  padding-top: 20rpx;
+}
+
+.detail_item {
+  height: 96rpx;
+  margin: 0 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.detail_item:first-child {
+  height: 156rpx;
+}
+
+.detail_item_left {
+  width: 80px;
+  font-size: 16px;
+  color: #4a4a4a;
+}
+
+.detail_item_right {
+  flex: 1;
+  text-align: right;
+  font-size: 14px;
+  color: #979797;
+}
+
+.mine_header_head_one_img {
+  width: 124rpx;
+  height: 124rpx;
+  vertical-align: middle;
+  background-color: #207ce9;
+}
+
+.modalInput{
+  margin-top: 20rpx;
+  padding-left: 24rpx;
+  background-color: #eff3f7;
+  color: #4a4a4a;
+}
+
+.fixed_height {
+  height: 20px;
+}

@@ -1,0 +1,79 @@
+/* pages/apply/applySuccess/applySuccess.wxss */
+
+.group {
+  text-align: center;
+  padding: 0 40rpx;
+}
+
+.group:first-child {
+  padding-top: 120rpx;
+}
+
+.group:nth-child(2) {
+  padding: 20rpx 0;
+  font-size: 18px;
+}
+
+.group:nth-child(3) {
+  padding-bottom: 60rpx;
+  font-size: 14px;
+  text-align: center;
+}
+
+.group:nth-child(4) {
+  padding-bottom: 20px;
+}
+
+.group:nth-child(4) button {
+  font-size: 16px;
+  color: #207ce9;
+  background-color: #fff;
+}
+
+.group:nth-child(4) button::after {
+  border: 0;
+}
+
+.group:nth-child(5) button{
+  font-size: 16px;
+  color: #4a4a4a;
+  background-color: #fff;
+}
+
+.group_bottom {
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  background-color: #fff;
+  padding: 20rpx 0;
+}
+
+.long_press {
+  text-align: center;
+  font-size: 12px;
+  line-height: auto;
+  color: #4a4a4a;
+}
+
+.two_bar_code {
+  width: 218rpx;
+  height: 218rpx;
+  margin: 5px auto;
+  background-color: #dedede;
+}
+
+.two_bar_code image {
+  width: 218rpx;
+  height: 218rpx;
+}
+
+.instant_tip {
+  text-align: center;
+  font-size: 12px;
+  line-height: 20px;
+  color: #207ce9;
+}
+
+.fixed_margin {
+  height: 10px;
+}

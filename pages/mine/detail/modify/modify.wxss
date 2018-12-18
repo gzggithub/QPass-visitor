@@ -1,0 +1,26 @@
+/* pages/mine/detail/modify/modify.wxss */
+
+.modify_username {
+  width: 100%;
+  padding-top: 40rpx;
+}
+
+.modify_username input {
+  width: 80%;
+  margin: 0 auto;
+  border-bottom: 1px solid green;
+  font-size: 14px;
+}
+
+.modify_save{
+  height: 50rpx;
+  padding: 40rpx 70rpx;
+  margin: 0 auto;
+  color: green;
+  text-align: center
+}
+
+.modify_save button{
+  color: green;
+  text-align: center
+}

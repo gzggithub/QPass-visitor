@@ -1,0 +1,84 @@
+<!--pages/apply/identityInformation/identityInformation.wxml-->
+<import src='../../../template/progress' />
+
+<view class='newApply_container'>
+  <!-- <template is='progress'></template> -->
+
+  <view class='progress'>
+    <!-- <progress percent='{{pageInfo}}' stroke-width='3' color='#207ce9'></progress> -->
+
+    <view class='progress_item' style='width:100%'>
+      <view class='progress_item progress_item_add' style='width:{{pageInfo}}%'></view>
+    </view>
+    <view class='progress_icon progress_{{pageInfo}}'>
+      <view></view>
+      <view></view>
+      <view></view>
+    </view>
+
+  </view>
+  <view class='common_form form_submit'>
+    <form bindsubmit="formSubmit" report-submit='true'>
+      <view class="detail_item">
+        <view class="detail_item_left">姓名：</view>
+        <view class="detail_item_right">
+          <input name='realName' type="text" value='{{realName}}' maxlength='12' bindinput="bindRealNameEvent" placeholder='请输入姓名' />
+        </view>
+      </view>
+      <view class="detail_item">
+        <view class="detail_item_left">性別：</view>
+        <view class="detail_item_right">
+          <picker bindchange="bindGenderEvent" data-model="component" data-method="bindSelect" data-name="index" value='{{index}}' range="{{gender}}">
+            <view class="label-right">
+              {{gender[index]}}
+            </view>
+          </picker>
+        </view>
+      </view>
+      <view class="detail_item">
+        <view class="detail_item_left">身份证号：</view>
+        <view class="detail_item_right">
+          <input name='ID-card' type="idcard" value='{{IdCard}}' bindinput='bindIdCardEvent' maxlength='18' placeholder='请输入身份证号' />
+        </view>
+      </view>
+      <view class="detail_item">
+        <view class="detail_item_left">联系电话：</view>
+        <view class="detail_item_right">
+          <input name='tel' type="number" value='{{phone_number}}' bindinput ="mobileInput" maxlength='11' placeholder='请输入手机号'   />
+        </view>
+      </view>
+
+      <view class="detail_item">
+        <view class="detail_item_left">所属单位：</view>
+        <view class="detail_item_right">
+          <input name='company' type="text" value='{{company}}' bindinput ="bindCompanyEvent" maxlength='16' placeholder='请输入所属单位' />
+        </view>
+      </view>
+      <view class="detail_item">
+        <view class="detail_item_left">在职部门：</view>
+        <view class="detail_item_right">
+          <input name='department' type="text" value='{{department}}' bindinput ="bindDepartmentEvent" maxlength='16' placeholder='请输入在职部门' />
+        </view>
+      </view>
+      <view class="detail_item">
+        <view class="detail_item_left">所在职位：</view>
+        <view class="detail_item_right">
+          <input name='job' type="text" value='{{job}}' bindinput ="bindJobEvent" maxlength='16' placeholder='请输入所在职位' />
+        </view>
+      </view>
+
+      <view class='newApply_start submit_apply'>
+        <button class="apply_btn {{finish_suc == true ? 'finish_opacity': ''}}" disabled='{{finish_suc}}' formType="submit">下一步</button>
+      </view>
+    </form>
+  </view>
+
+  <!-- <view class='newApply_start'>
+    <button class="apply_btn {{finish_suc == true ? 'finish_opacity': ''}}" disabled='{{finish_suc}}' formType="submit">下一步</button>
+  </view> -->
+
+  <view class='newApply_tip'>
+    <text>请使用您本人的身份信息进行验证</text>
+  </view>
+  <view class='fixed_height'></view>
+</view>

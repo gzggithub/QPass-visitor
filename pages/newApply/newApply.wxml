@@ -1,0 +1,153 @@
+<!--pages/apply/newApply/newApply.wxml-->
+<!-- <import src='../../template/progress' /> -->
+<view class='newApply_container' style='height: {{winHeight}}px'>
+  <!-- <template is='progress'></template> -->
+  <view class='progress'>
+    <!-- <progress id='progress' percent='{{pageInfo}}' stroke-width='3' color='#207ce9'></progress> -->
+
+    <view class='progress_item' style='width:100%'>
+      <view class='progress_item progress_item_add' style='width:{{pageInfo}}%'></view>
+    </view>
+
+    <view class='progress_icon progress_{{pageInfo}}'>
+      <view></view>
+      <view></view>
+      <view></view>
+    </view>
+
+  </view>
+
+  <view class='newApply_image' style='background:#eff3f7;' wx:if='{{apply_start}}'>
+    <view style='position:relative;width:{{example_width}}{{example_width == 273 ? "px": "%"}};height: 280px;'>
+      <view class='example' style='opacity: {{example_opacity}}'>示例</view>
+      <image src='{{face_image}}' style='width:{{example_width}}{{example_width == 273 ? "px": "%"}};' mode="aspectFit" class="newApply_image_img"></image>
+    </view>
+  </view>
+  
+  <view class='newApply_image' style='background:#eff3f7;position:relative;z-index:5;' wx:if='{{apply_next}}'>
+    <canvas hidden="{{canvasHidden}}" style="width: {{canvasWidth}}px; height: {{canvasHeight}}px;" canvas-id="myCanvas" wx:if='{{image_size_canvas}}' />
+    <canvas hidden="{{canvasHidden}}" class='myCanvasCopy' style="width: {{canvasOneWidth}}px; height: {{canvasOneHeight}}px;left: -{{canvasOneWidth}}px;top: -{{canvasOneHeight}}px" canvas-id="myCanvasCopy" />
+    <image src='{{face_image}}' mode="aspectFit" class="newApply_image_img" style='width:{{imgHeight}}%;' wx:if='{{image_size}}'></image>
+  </view>
+
+  <view class="canvas-box" style='opacity:{{opacity}}'>
+    <!-- <canvas hidden="{{canvasHidden}}" canvas-id="myFirstCanvas" /> -->
+    <image src='{{imageTempPath}}' mode="aspectFit" style='width: 100px; height: 100px;'></image>
+  </view>
+
+  <view class="canvas-box canvas-box-one">
+    <canvas hidden="{{canvasHidden}}" canvas-id='mySecondCanvas' />
+  </view>
+
+  <view class='fix_height'>
+    <view class='apply_tip_msg' style='' wx:if='{{no_net_recognition_suc}}'>
+      <view class='apply_tip_msg_item apply_tip_msg_item_color_warn'>
+        <view>?</view>
+      </view>
+      <view class='apply_tip_msg_item'>
+        <text>超时</text>
+      </view>
+    </view>
+
+    <view class='apply_tip_msg' style='' wx:if='{{no_recognition_suc}}'>
+      <view class='apply_tip_msg_item apply_tip_msg_item_color_x'>
+        <view>X</view>
+      </view>
+      <view class='apply_tip_msg_item'>
+        <text>未识别到人脸</text>
+      </view>
+    </view>
+
+    <view class='apply_tip_msg' style='' wx:if='{{recognition_suc}}'>
+      <view class='apply_tip_msg_item apply_tip_msg_item_color'>
+        <view>✔</view>
+      </view>
+      <view class='apply_tip_msg_item'>
+        <text>识别成功</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- <view class='newApply_start' wx:if='{{apply_start}}'>
+    <button class='apply_btn' bindtap='clickstart'>开始</button>
+  </view> -->
+
+  <view class='newApply_start' wx:if='{{apply_start_first}}'>
+    <button class="apply_btn {{start == true ? 'finish_opacity': ''}}" disabled='{{start}}' bindtap='clickstart'>开始</button>
+  </view>
+  <view class='newApply_start' wx:if='{{recognition_suc_next_rest}}'>
+    <button class="apply_btn {{disabled ? 'finish_opacity': ''}}" disabled='{{disabled}}' bindtap='clickNextRest'>下一步</button>
+  </view>
+  <view class='newApply_start' wx:if='{{recognition_suc_next}}'>
+    <button class="apply_btn {{disabled ? 'finish_opacity': ''}}" disabled='{{disabled}}' bindtap='clickNext'>下一步</button>
+  </view>
+  <view class="newApply_start {{apply_restart_suc ? 'restart_style_top': ''}}" wx:if='{{restart_recognition_suc_one}}'>
+    <button class="apply_btn apply_btn_restart" bindtap='clickrestart'>重拍</button>
+  </view>
+
+  <modal hidden="{{hiddenmodalput}}" title="人脸采集" confirm-text="确定" cancel-text="取消" no-cancel="false" bindcancel="cancelM" bindconfirm="confirmM" style="background-color:#FFFFFF">
+    <view class='modal_item'>
+      <image src='../../image/group_7.png' mode="aspectFit"></image>
+      <view class='modal_item_color'>
+        <view>✔</view>
+      </view>
+    </view>
+    <view class='modal_item'>
+      正确案例
+    </view>
+    <view class='modal_item'>
+      请确保图片清晰且主体为正脸
+    </view>
+    <view class='modal_item'>
+      <view class='modal_item_index'>
+        <view>
+          <image src='../../image/group_11.png' style='width:59px;height:59px;'></image>
+        </view>
+        <view>
+          <text>脸部过小</text>
+        </view>
+      </view>
+      <view class='modal_item_index'>
+        <view>
+          <image src='../../image/group_10.png' style='width:59px;height:59px;'></image>
+        </view>
+        <view>
+          <text>照片模糊</text>
+        </view>
+      </view>
+      <view class='modal_item_index'>
+        <view>
+          <image src='../../image/group_9.png' style='width:59px;height:59px;'></image>
+        </view>
+        <view>
+          <text>光线不当</text>
+        </view>
+      </view>
+      <view class='modal_item_index'>
+        <view>
+          <image src='../../image/group_8.png' style='width:59px;height:59px;'></image>
+        </view>
+        <view>
+          <text>脸部遮挡</text>
+        </view>
+      </view>
+    </view>
+  </modal>
+
+  <!-- <view class='newApply_tip' wx:if='{{apply_start}}'>
+    <text>首次申请需要识别您本人照片进行验证</text>
+  </view> -->
+
+  <view class='newApply_tip' wx:if='{{apply_start_first}}'>
+    <text>首次申请需要识别您本人照片进行验证</text>
+  </view>
+
+  <view class='newApply_tip' wx:if='{{apply_restart}}'>
+    <text>请确认无误后点击进行下一步</text>
+  </view>
+
+  <view class='newApply_tip' wx:if='{{apply_clear_restart}}'>
+    <text>请确保图片清晰且主体为正脸</text>
+  </view>
+
+</view>

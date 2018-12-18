@@ -1,0 +1,89 @@
+<!--pages/apply/visitedInformation/visitedInformation.wxml-->
+<import src='../../../template/progress' />
+
+<view class='newApply_container'>
+  <!-- <template is='progress'></template> -->
+  <view class='progress'>
+    <!-- <progress percent='{{pageInfo}}' stroke-width='3' color='#207ce9'></progress> -->
+    <view class='progress_item' style='width:100%'>
+      <view class='progress_item progress_item_add' style='width:{{pageInfo}}%'></view>
+    </view>
+
+    <view class='progress_icon progress_{{pageInfo}}'>
+      <view></view>
+      <view></view>
+      <view></view>
+    </view>
+  </view>
+
+  <view class='newApply_image'>
+    <view src='' class="newApply_image_img"></view>
+  </view>
+
+  <view class='common_form form_submit'>
+    <form bindsubmit="formSubmit" report-submit='true'>
+      <view class="detail_item" style='border-bottom: {{border_bottom}};'>
+        <view class="detail_item_left">受访人：</view>
+        <view class="detail_item_right" style='display: flex'>
+          <input style='flex: 1' name='visitors' type='text' value='{{visitors}}' bindinput="bindVisitorsEvent" maxlength='12' placeholder='请输入受访人姓名' /><view class="exist_icon"><icon class="exist" wx:if='{{exist}}' type="success" size="21" color='#2ed900' /></view>
+        </view>
+      </view>
+
+      <view class='query_name_error' wx:if='{{no_exist}}'>
+        <view class="no_exist"><text>!</text></view>
+        <view class='query_name_error_tip'>请准确输入受访人姓名</view>
+      </view>
+
+      <view class="detail_item">
+        <view class="detail_item_left">所属单位：</view>
+        <view class="detail_item_right">{{company}}</view>
+      </view>
+      <view class="detail_item">
+        <view class="detail_item_left">在职部门：</view>
+        <view class="detail_item_right">{{department}}</view>
+      </view>
+      <view class="detail_item">
+        <view class="detail_item_left">所在职位：</view>
+        <view class="detail_item_right">{{job}}</view>
+      </view>
+      <view class="detail_item">
+        <view class="detail_item_left">来访目的：</view>
+        <view class="detail_item_right">
+          <input name='visit_purpose' type='text' value='{{visit_purpose}}' bindinput="bindVisitPurposeEvent" maxlength='12' placeholder='请输入来访目的' />
+        </view>
+      </view>
+      <view class="detail_item">
+        <view class="detail_item_left">来访时间：</view>
+        <view class="detail_item_right">
+          <picker mode="multiSelector" value="{{dateTime1}}" bindchange="changeDateTime1" bindcolumnchange="changeDateTimeColumn1" range="{{dateTimeArray1}}">
+            <view class="tui-picker-detail">
+              {{dateTimeArray1[0][dateTime1[0]]}}-{{dateTimeArray1[1][dateTime1[1]]}}-{{dateTimeArray1[2][dateTime1[2]]}} {{dateTimeArray1[3][dateTime1[3]]}}:{{dateTimeArray1[4][dateTime1[4]]}}
+            </view>
+          </picker>
+        </view>
+      </view>
+
+      <view class="detail_item" style='border-bottom: none;'>
+        <view class="detail_item_left">离开时间：</view>
+        <view class="detail_item_right">
+          <picker mode="multiSelector" value="{{dateTime2}}" bindchange="changeDateTime2" bindcolumnchange="changeDateTimeColumn2" range="{{dateTimeArray2}}">
+            <view class="tui-picker-detail">
+              {{dateTimeArray2[0][dateTime2[0]]}}-{{dateTimeArray2[1][dateTime2[1]]}}-{{dateTimeArray2[2][dateTime2[2]]}} {{dateTimeArray2[3][dateTime2[3]]}}:{{dateTimeArray2[4][dateTime2[4]]}}
+            </view>
+          </picker>
+        </view>
+      </view>
+
+      <view class='newApply_start submit_apply'>
+        <button class="apply_btn' {{finish_suc == true ? 'finish_opacity': ''}}" disabled='{{finish_suc}}' formType="submit">提交申请</button>
+      </view>
+    </form>
+  </view>
+
+  <view class='fixed_height'></view>
+
+  <!-- <view class='newApply_start'>
+    <button class="apply_btn' {{finish_suc == true ? 'finish_opacity': ''}}" disabled='{{finish_suc}}' formType="submit" bindtap='clickNext'>提交申请</button>
+  </view> -->
+
+</view>
